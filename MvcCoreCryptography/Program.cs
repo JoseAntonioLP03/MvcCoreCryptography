@@ -4,11 +4,12 @@ using MvcCoreCryptography.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews();
+
 // Add services to the container.
 string connectionString = builder.Configuration.GetConnectionString("SqlHospital");
 builder.Services.AddTransient<RepositoryUsuarios>();
 builder.Services.AddDbContext<UsuariosContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
